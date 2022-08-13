@@ -27,7 +27,7 @@ export class BotStrategies {
         await Users.createIfNotExists(
           {
             telegramId: ctx.message.from.id as unknown as string,
-            username: ctx.message.from.username,
+            username: ctx.message.from?.username,
             group: undefined,
           },
           group

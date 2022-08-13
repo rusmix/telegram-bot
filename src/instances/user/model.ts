@@ -15,7 +15,6 @@ const UserSchema = new Schema<IDocument, IModel>(
     },
     username: {
       type: Types.String,
-      required: true,
     },
     group: {
       type: Types.ObjectId,
@@ -51,7 +50,7 @@ UserSchema.statics.createIfNotExists = async function (
   if (!group) return;
   return new Users({
     telegramId: user.telegramId,
-    username: user.username,
+    username: user?.username,
     group: group,
   }).save();
 };
