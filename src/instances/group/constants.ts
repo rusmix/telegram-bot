@@ -1,1 +1,1 @@
-export const GROUPS_COLLECTION_NAME = "Groups"
+export const GROUPS_COLLECTION_NAME = 'Groups';

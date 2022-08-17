@@ -1,14 +1,12 @@
-import { BotConfig } from "./bot/botConfig";
-const mongoose = require('mongoose');
-import 'dotenv/config';
+import mongoose from 'mongoose';
+
+import {BotConfig} from './bot/botConfig';
+
+import {Config} from './config';
 
 const main = async () => {
-  try {
-    mongoose.connect(process.env.MONGO_URL);
-  } catch (e) {
-    console.log(e);
-  }
-  new BotConfig();
+    mongoose.connect(Config.mongoUrl);
+    new BotConfig();
 };
 
 main();

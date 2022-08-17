@@ -1,21 +1,24 @@
-import { Aggregate, Document, Model } from "mongoose";
+import {
+    Document,
+    Model,
+} from 'mongoose';
 
-export interface IGroup {
-  telegramId: string;
+export interface IMongoose {
+    telegramId: string;
 }
 
-export interface IGroupObject extends IGroup {
-  _id: Document["_id"];
+export interface IObject extends IMongoose {
+    _id: Document['_id'];
 
-  createdAt: Date;
-  updatedAt: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
-export interface IDocument extends IGroupObject, Document {
-  _id: Document["_id"];
+export interface IDocument extends IObject, Document {
+    _id: Document['_id'];
 }
 
-export interface IModel extends Model<IGroupObject, IDocument> {
-    findGroupWithMinimumUsers(): Promise<IGroupObject | null>;
-    createIfNotExists(groupId: string): Promise<IGroupObject>;
-  }
+export interface IModel extends Model<IDocument> {
+    findGroupWithMinimumUsers(): Promise<IObject | null>;
+    createIfNotExists(telegramId: string): Promise<IObject | undefined>;
+}

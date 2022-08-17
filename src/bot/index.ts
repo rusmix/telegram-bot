@@ -1,1 +1,1 @@
-export * from "./botConfig";
+export * from './botConfig';
