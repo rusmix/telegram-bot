@@ -65,7 +65,7 @@ GroupSchema.statics.findGroupWithMinimumUsers =
 
 GroupSchema.statics.createIfNotExists = async function(
     telegramId: string
-): Promise<IObject | undefined> {
+): Promise<IObject | null> {
     const existingGroup = await Groups.findOne({
         telegramId,
     });

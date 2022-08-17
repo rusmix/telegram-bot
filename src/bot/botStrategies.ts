@@ -43,9 +43,9 @@ export class BotStrategies {
 
             console.log(group);
             if (!group)
-                ctx.reply('Can\'t find avalible support group, send /start later.');
+                ctx.reply('Не удаётся найти группу для поддержки, попробуйте написать /start позже');
             else {
-                const user = await Users.createIfNotExists(
+                await Users.createIfNotExists(
                     {
                         telegramId: message.from.id as unknown as string,
                         username: message.from?.username,
@@ -56,7 +56,6 @@ export class BotStrategies {
                     group._id
                 );
 
-                console.log(user);
                 ctx.reply(
                     'Добро пожаловать! Если у Вас есть вопросы или предложения, напишите их в чат!'
                 );
@@ -95,7 +94,7 @@ export class BotStrategies {
         const message = ctx.message as TgMessage;
 
         try {
-            if (message?.text.split(' ')[1] !== Config.botSecret) return;
+            if (message?.text.split(' ')[1] !== Config.botSecret) return ctx.reply('Неверный пароль');
 
             const newGroup = await Groups.createIfNotExists(
                 String(ctx.message.chat.id)

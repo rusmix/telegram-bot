@@ -20,5 +20,5 @@ export interface IDocument extends IObject, Document {
 
 export interface IModel extends Model<IDocument> {
     findGroupWithMinimumUsers(): Promise<IObject | null>;
-    createIfNotExists(telegramId: string): Promise<IObject | undefined>;
+    createIfNotExists(telegramId: string): Promise<IObject | null>;
 }

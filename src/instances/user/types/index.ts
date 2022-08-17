@@ -24,6 +24,6 @@ export interface IDocument extends IObject, Document {
 }
 
 export interface IModel extends Model<IDocument> {
-    createIfNotExists(user: IMongoose, groupId: ObjectId): Promise<IObject | undefined>;
+    createIfNotExists(user: IMongoose, groupId: ObjectId): Promise<IObject | null>;
     getTelegramGroupId(telegramId: string): Promise<string>;
 }

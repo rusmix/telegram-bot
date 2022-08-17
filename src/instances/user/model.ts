@@ -59,7 +59,7 @@ UserSchema.pre<IUserObject>('save', function() {
 UserSchema.statics.createIfNotExists = async function(
     user: IUser,
     groupId: ObjectId
-): Promise<IUserObject | undefined> {
+): Promise<IUserObject | null> {
     const existingUser = await Users.findOne({
         telegramId: user.telegramId,
     });
